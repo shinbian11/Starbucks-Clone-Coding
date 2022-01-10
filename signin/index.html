@@ -37,8 +37,9 @@
     <!-- icon의 크기를 조절하려면 font-size를 이용! 글씨처럼 취급됨! 기본 사이즈는 24px 이다. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <!-- google fonts 나 material icon 관련 link tag보다 하단에 정의하기. main.css 는 우리가 정의한 css 파일이다. -->
+    <!-- css 파일 연결 -->
     <link rel = "stylesheet" href = "../css/common.css">
+    <link rel = "stylesheet" href = "../css/signin.css">
 
     <script defer src="../js/common.js"></script> 
 </head>
@@ -378,7 +379,28 @@
     </header>
     <!-- header 태그나 section 태그 자체로 어떠한 기능을 가지는 것은 아니기 때문에, div 태그로 구역을 나누어도 되지만, 의미적으로 봤을 때 쉽게 알아볼 수 있으므로 형식상 이렇게 나누는 경우가 일반적이다! -->
     
-    <section class="signin"></section>
+    <section class="signin">
+        <h1>로그인</h1>
+        <div class="signin__card">
+            <h2>
+                <strong>Welcome!</strong> 스타벅스에 오신 것을 환영합니다.
+            </h2>
+            <form>
+                <input type="text" placeholder="아이디를 입력하세요.">
+                <input type="password" placeholder="비밀번호를 입력하세요.">
+                <input type="submit" value = "로그인"> <!-- button 태그를 만들 필요 없음 -->
+                <p>
+                    * 비밀번호를 타 사이트와 같이 사용할 경우 도용 위험이 있으니, <br>
+                    정기적으로 비밀번호를 변경하세요!
+                </p>
+            </form>
+            <div class="actions">
+                <a href="javascript:void(0)">회원가입</a>
+                <a href="javascript:void(0)">아이디 찾기</a>
+                <a href="javascript:void(0)">비밀번호 찾기</a>
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <footer>
