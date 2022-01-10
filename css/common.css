@@ -1,0 +1,374 @@
+/* COMMON : 공통 css */
+
+body {
+    /* 기본적으로 글자와 관련된 속성들은 상속된다 */
+    color : #333; /* 어두운 회색 */
+    font-size : 16px;
+    font-weight: 400;
+    line-height : 1.4;
+    font-family: 'Nanum Gothic', sans-serif; /* google fonts */
+    /* height : 6000px; */
+}
+img {
+    display: block; /* img 는 기본적으로 inline 요소인데, 이를 block 요소로 바꾸기 */
+}
+a {
+    text-decoration: none; /* a tag는 밑줄을 사용하지 않겠다 */
+}
+.inner { /* 화면 중앙에 정렬시키는 공통 css */
+    width : 1100px; /* width를 정의하고, margin을 이용하면 정렬 가능하다 */
+    margin : 0 auto; /* 수평으로 가운데 정렬 */
+    position : relative;
+}
+
+.btn { /* 버튼 */
+    width : 130px;
+    padding : 10px;
+    border : 2px solid #333;
+    border-radius: 4px;
+    color :#333;
+    font-size : 16px;
+    font-weight: 700;
+    text-align: center;
+    cursor:pointer;
+    box-sizing: border-box;
+    display : block;
+    transition : .4s;
+}
+.btn:hover {
+    background-color: #333;
+    color : #fff;
+}
+
+.btn.btn--reverse {
+    background-color: #333;
+    color : #fff;
+}
+.btn.btn--reverse:hover {
+    background-color: transparent;
+    color : #333;
+}
+
+.btn.btn--brown {
+    color: #592B18;
+    border-color : #592B18;
+}
+ 
+.btn.btn--brown:hover {
+    color: #FFF;
+    background-color : #592B18;
+}
+
+.btn.btn--gold {
+    color: #D9AA8A;
+    border-color : #D9AA8A;
+}
+ 
+.btn.btn--gold:hover {
+    color: #FFF;
+    background-color : #D9AA8A;
+}
+
+.btn.btn--white {
+    color: #FFF;
+    border-color : #FFF;
+}
+ 
+.btn.btn--white:hover {
+    color: #333;
+    background-color : #FFF;
+}
+
+.back-to-position {
+    opacity : 0;
+    transition: 1s;
+}
+
+.back-to-position.to-right {
+    transform : translateX(-150px);
+} 
+
+.back-to-position.to-left {
+    transform : translateX(150px);
+} 
+
+.show .back-to-position {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.show .back-to-position.delay-0 {
+    transition-delay: 0s;
+}
+.show .back-to-position.delay-1 {
+    transition-delay: .3s;
+}
+.show .back-to-position.delay-2 {
+    transition-delay: .6s;
+}
+.show .back-to-position.delay-3 {
+    transition-delay: .9s;
+}
+
+/* HEADER */
+
+header {
+    /* position : fixed / absolute 일 때 : 가로 너비가 최소한으로 줄어들려고 한다! */
+    /* 그래서 width : 100% 해줘야 됨 */
+    width : 100%;
+    position : fixed;
+    top : 0;
+    background-color: #f6f5f0;
+    border-bottom : 1px solid #c8c8c8;
+    z-index : 9;
+}
+header > .inner {
+    height: 120px;  
+}
+header .logo {
+    /* position : relative 를 가지고 있는 부모 요소인 .inner 기준으로 top, bottom 등 사용 가능 */
+    /* 밑 5줄 (height, position, top, bottom, margin)이 가운데 정렬하는 기준 */
+    height : 75px;
+    position : absolute;
+    top: 0;
+    bottom : 0;
+    margin : auto 0;
+
+    left : 0;
+}
+header .sub-menu {
+    position : absolute;
+    top : 10px;
+    right : 0;
+
+    display: flex;
+}
+header .sub-menu ul.menu {
+    display : flex;
+    font-family: Arial, sans-serif;
+}
+header .sub-menu ul.menu li {
+    position : relative;
+}
+header .sub-menu ul.menu li::before { /* ::before 은 inline 요소이다 */
+    /* sub-menu list 들 사이에 구분선 ( | ) 넣기 */
+    content : "";
+    /* display : block; */
+    width : 1px;
+    height : 12px;
+    background-color: #e5e5e5;
+    position: absolute; /* position이 absolute면 자동으로 display 가 block 으로 바뀐다 */
+    top : 0;
+    bottom : 0;
+    margin : auto 0; /* 구분선 수직 가운데 정렬 */
+}
+header .sub-menu ul.menu li:first-child::before {
+    display : none;
+}
+header .sub-menu ul.menu li a {
+    font-size : 12px;
+    padding : 11px 16px;
+    display : block;
+    color : #656565;
+    /* text-decoration: none; => 이 css 효과는 COMMON에 정의함! */
+}
+header .sub-menu ul.menu li a:hover {
+    color : #000;
+}
+header .sub-menu .search {
+    height: 34px;
+    position: relative;
+}
+header .sub-menu .search input {
+    width : 36px;
+    height : 34px;
+    padding : 4px 10px;
+    border : 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+    outline: none;
+    background-color: #fff;
+    color : #777;
+    font-size : 12px;
+    transition: width .4s; /* input 요소를 클릭 시 width 증가할 때 animation 효과 */
+}
+header .sub-menu .search input:focus { /* input 요소를 클릭 시 (focus) */
+    width : 190px;
+    border-color: #669900; /* focus된 경계선의 색깔 */
+}
+header .sub-menu .search .material-icons {
+    /* material-icons 를 수직 가운데 정렬 */
+    height : 24px;
+    position : absolute;
+    top : 0;
+    bottom : 0;
+    right : 5px;
+    margin : auto 0;
+    transition: .4s; /* 돋보기 아이콘이 사라지는 animation */
+}
+
+header .sub-menu .search.focused .material-icons { /* .search 와 .focused 는 일치 선택자이다. */
+    /* material-icons(돋보기 아이콘)이 focused 되면, icon은 사라져야(투명해져야) 됨 */
+    opacity : 0;
+}
+
+header .main-menu {
+    position: absolute;
+    bottom : 0;
+    right : 0;
+    z-index: 1;
+
+    display : flex;
+}
+header .main-menu .item {
+    
+}
+header .main-menu .item .item__name {
+    padding : 10px 20px 34px 20px;
+    font-family: Arial, sans-serif;
+    font-size : 13px;
+}
+header .main-menu .item:hover .item__name {
+    background-color: #2c2a29;
+    color : #669900;
+    border-radius: 6px 6px 0 0;
+}
+header .main-menu .item .item__contents {
+    width : 100%;
+    position : fixed;
+    left : 0;
+    display : none;
+}
+header .main-menu .item:hover .item__contents {
+    display : block;
+}
+header .main-menu .item .item__contents .contents__menu {
+    background-color: #2c2a29;
+}
+header .main-menu .item .item__contents .contents__menu > ul {
+    display : flex;
+    padding : 20px 0;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li {
+    width : 220px;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li h4 {
+    padding : 3px 0 12px 0;
+    font-size : 14px;
+    color : #fff;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li {
+    padding : 5px 0;
+    font-size : 12px;
+    color : #999;
+    cursor : pointer;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li:hover {
+    color : #669900;
+}
+header .main-menu .item .item__contents .contents__texture {
+    /* background-color: orange;
+    height : 100px; */
+    padding : 26px 0;
+    font-size : 12px;
+    background-image: url("../images/main_menu_pattern.jpg");
+}
+header .main-menu .item .item__contents .contents__texture h4 {
+    color : #999;
+    font-weight : 700;
+}
+header .main-menu .item .item__contents .contents__texture p {
+    color : #669900;
+    margin : 4px 0 14px;
+}
+
+
+header .badges {
+    position : absolute;
+    top : 132px;
+    right : 12px;
+}
+
+header .badges .badge {
+    border-radius: 10px;
+    overflow : hidden;
+    margin-bottom : 12px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, .15);
+    cursor : pointer;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #272727;
+    border-top : 1px solid #333;
+}
+footer .inner {
+    padding : 40px 0 60px 0;
+}
+footer .menu {
+    display : flex;
+    justify-content: center;
+}
+footer .menu li {
+    position : relative;
+}
+footer .menu li::before {
+    content: "";
+    width : 3px;
+    height : 3px;
+    background-color : #555;
+    position : absolute; /* position : absolute or fixed 일때 : display 가 block 으로 자동 변경됨 */
+    top : 0;
+    bottom : 0;
+    right : -1px;
+    margin : auto;
+}
+footer .menu li:last-child::before {
+    display: none;
+}
+footer .menu li a {
+    color : #ccc;
+    font-size : 12px;
+    font-weight: 700;
+    padding : 15px;
+    display : block;
+}
+footer .menu li a.green {
+    color : #669900;
+}
+footer .btn-group {
+    margin-top: 20px;
+    display : flex;
+    justify-content: center;
+}
+footer .btn-group .btn {
+    font-size: 12px;
+    margin-right : 10px;
+}
+footer .btn-group .btn:last-child {
+    margin-right : 0;
+}
+footer .info {
+    margin-top : 30px;
+    text-align: center;
+}
+footer .info span {
+    margin-right: 20px;
+    color : #999;
+    font-size: 12px;
+}
+footer .info span:last-child {
+    margin-right: 0;
+}
+footer .copyright {
+    color : #999;
+    font-size : 12px;
+    text-align: center;
+    margin-top : 12px;
+}
+footer .logo {
+    /* img 태그가 display : block; + margin : 0 auto; 인 경우, width 속성이 없어도 가운데 정렬이 가능 
+    (.logo 는 img 태그이다. 또한 COMMON css 에서 img 요소에 display : block; 을 줬다) */
+    margin: 30px auto 0;
+}
